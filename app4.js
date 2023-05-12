@@ -19,7 +19,6 @@ app.use(function(req, res, next) {
     res.end();
 });
 
-
 // expres server 시작
 http.createServer(app).listen(3000, function() {
     console.log('express server start. : 3000');
