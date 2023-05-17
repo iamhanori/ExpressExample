@@ -1,16 +1,28 @@
-// 0512 static 미들웨어
+// 0517 app.use('/', static(path.join(__dirname, 'public'))); 수정
 
-// path, body-parser 모듈 설치
-// express 객체 생성
+// 모듈 설치
 var express = require('express');
 var http = require('http');
-var path = require('path');
 var static = require('serve-static');
 
+var path = require('path');
+var bodyParser = require('body-parser');
+
+// express 객체 생성
 var app = express();
 
-app.use('/public', static(path.join(__dirname, 'public')));
-    
+// 기본 속성 설정
+app.set('port', process.env.PORT || 3000);
+
+// body-parser를 이용해 application/x-www-form-urlencoded 파싱
+app.use(bodyParser.urlencoded({extended:false}));
+
+// body-parser를 이용해 application/json 파싱
+app.use(bodyParser.json());
+
+app.use('/', static(path.join(__dirname, 'public')));
+// app.use(static(path.join(__dirname, 'public')));
+
 app.use(function(req, res, next) {
     console.log('첫번째 미들웨어에서 요청을 처리함.');
 
