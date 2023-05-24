@@ -41,7 +41,8 @@ app.use(function(req, res, next) {
 // expres server 시작
 // http://localhost:3000?id=test&password=1234
 // http://localhost:3000/image/girl.png
-// http://localhost:3000/public/stylesheets/style.css
+// http://localhost:3000/public/stylesheets
+/style.css
 http.createServer(app).listen(3000, function() {
     console.log('express server start. : 3000');
 });
